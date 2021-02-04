@@ -1,11 +1,12 @@
 import React from "react";
+import Container from "../../components/atoms/Container/Container";
 
 class NewCompView extends React.Component {
   render() {
     return (
-      <div>
+      <Container>
         <h1>New Composition View</h1>
-      </div>
+      </Container>
     );
   }
 }
