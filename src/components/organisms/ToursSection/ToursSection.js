@@ -15,7 +15,7 @@ const Head = styled.div`
 const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  max-width: 1010px;
   margin: 0 auto;
 `;
 
