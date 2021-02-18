@@ -1,6 +1,7 @@
 import React from "react";
-import styled, { css, keyframes } from "styled-components";
-import ButtonBg from "../../../assets/img/button_bg.jpg";
+import styled, { css } from "styled-components";
+import ButtonBg from "../../../assets/img/button_bg.png";
+import AngleRight from "../../../assets/img/angle_right.png";
 
 const StyledButton = styled.a`
   display: inline-block;
@@ -8,53 +9,79 @@ const StyledButton = styled.a`
   text-align: center;
   font-size: 13px;
   text-decoration: none;
-  padding: 18px 60px;
+  padding: 23px 30px;
   line-height: 1.1;
   font-weight: 700;
   border-radius: 0;
-  border: 0;
-  text-transform: uppercase;
+
   font-family: "Open Sans", sans-serif;
   color: ${(props) => `${props.theme.colors.deepBlack}`};
   transition: 0.2s ease-out all;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: url(${ButtonBg}) center no-repeat;
-    background-size: cover;
-    filter: grayscale(1);
-    opacity: 0.4;
-    transition: 0.2s ease-out all;
-  }
-
-  span {
-    position: relative;
-    z-index: 1;
-  }
-
-  &:hover {
-    color: ${(props) => `${props.theme.colors.white}`};
-
-    &::before {
-      filter: grayscale(0);
-      opacity: 1;
-    }
-  }
+  min-width: 195px;
+  border: 1px solid ${(props) => `${props.theme.colors.buttonBorder}`};
 `;
 
-const StyledAnchor = styled(StyledButton)``;
+const StyledAngleRight = styled.img`
+  margin-left: 18px;
+`;
 
-const Button = ({ children, href, secondary, ...props }) => {
+const StyledAnchor = styled(StyledButton)`
+  ${({ disc }) =>
+    disc &&
+    css`
+      & {
+        border: 0;
+        text-transform: uppercase;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: url(${ButtonBg}) center no-repeat;
+        background-size: cover;
+        filter: grayscale(1);
+        opacity: 0.4;
+        transition: 0.2s ease-out all;
+      }
+
+      span {
+        position: relative;
+        z-index: 1;
+      }
+
+      &:hover {
+        color: ${(props) => `${props.theme.colors.white}`};
+
+        &::before {
+          filter: grayscale(0);
+          opacity: 1;
+        }
+      }
+    `}
+`;
+
+const Button = ({ children, href, secondary, disc, angle, ...props }) => {
   return (
     <>
       {href ? (
-        <StyledAnchor href={href} target="_blank" rel="noopener noreferrer">
-          <span>{children}</span>
+        <StyledAnchor
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          disc={disc}
+          angle={angle}>
+          <span>
+            {children}
+            {angle ? (
+              <StyledAngleRight
+                src={AngleRight}
+                alt="Button angle"></StyledAngleRight>
+            ) : null}
+          </span>
         </StyledAnchor>
       ) : (
         <StyledButton {...props}>{children}</StyledButton>

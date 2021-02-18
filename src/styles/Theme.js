@@ -9,6 +9,7 @@ const theme = {
     grey: "#727272",
     greyText: "#798285",
     lightGrey: "#acacac",
+    buttonBorder: "#b3b5b5",
   },
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
   fonts: ["sans-serif", "Dosis"],

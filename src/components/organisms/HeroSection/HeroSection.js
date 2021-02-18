@@ -15,11 +15,6 @@ const HeroWrapper = styled.div`
   justify-content: center;
 `;
 
-const HeroText = styled.h2`
-  font-size: 2rem;
-  color: red;
-`;
-
 const HeroSection = () => (
   <HeroWrapper id="hero">
     <img src={HeroImg} alt="" />

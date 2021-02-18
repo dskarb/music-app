@@ -73,7 +73,7 @@ const MainNav = () => (
       <StyledAnchor href="#concert-tours">Concert tours</StyledAnchor>
     </NavItem>
     <NavItem>
-      <StyledAnchor>Latter compositions</StyledAnchor>
+      <StyledAnchor  href="#latter-compositions">Latter compositions</StyledAnchor>
     </NavItem>
     <NavItem>
       <StyledAnchor>New tracks</StyledAnchor>
