@@ -4,21 +4,52 @@ import Date from "../../atoms/Date/Date";
 import DateTitle from "../../atoms/DateTitle/DateTitle";
 import HeadingThree from "../../atoms/HeadingThree/HeadingThree";
 import Paragraph from "../../atoms/Paragraph/Paragraph";
+import CompositionNumber from "../../atoms/CompositionNumber/CompositionNumber";
+import PlaysIcon from "../../../assets/img/plays.png";
+import SavesIcon from "../../../assets/img/saved.png";
+import SharesIcon from "../../../assets/img/shares.png";
+import CommentsIcon from "../../../assets/img/comments.png";
 
 const StyledComposition = styled.div`
   display: flex;
   width: 100%;
   margin: 0 0 55px 0;
-  background: #f5f6f6;
+  background: ${(props) => `${props.theme.colors.lighterGrey}`};
 
-  &:nth-child(even) {
+  &:nth-child(odd) {
     flex-direction: row-reverse;
+
+    & > div::after {
+      left: unset;
+      right: 100%;
+      border-left: 20px solid transparent;
+      border-right: 20px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+    }
   }
 `;
 
 const Left = styled.div`
   width: 50%;
   padding: 20px 35px 35px 35px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 100%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+    border-right: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    clear: both;
+    z-index: 1;
+    transform: translateY(-50%);
+  }
 `;
 
 const Right = styled.div`
@@ -29,9 +60,29 @@ const StyledHeadingThree = styled(HeadingThree)`
   margin: 20px 0;
 `;
 
+const StyledButton = styled(Button)`
+  margin-right: 20px;
+`;
+
 const VideoWrapper = styled.div`
-  padding: 41.67% 0 0 0;
+  padding: 79.67% 0 0 0;
   position: relative;
+`;
+
+const BottomWrapper = styled.div`
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
+  a {
+    margin-right: 30px;
+  }
+`;
+
+const NumbersWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Video = styled.iframe`
@@ -52,18 +103,45 @@ const Composition = ({ children, ...props }) => {
           <DateTitle>{props.title}</DateTitle>
           <StyledHeadingThree>{props.heading}</StyledHeadingThree>
           <Paragraph>{props.content}</Paragraph>
-          <Button href={props.link} angle>
-            Visit the iTunes
-          </Button>
+          <BottomWrapper>
+            {props.link ? (
+              <StyledButton href={props.link} angle>
+                Visit the iTunes
+              </StyledButton>
+            ) : null}
+            <NumbersWrapper>
+              {props.plays ? (
+                <CompositionNumber iconSrc={PlaysIcon} number={props.plays} />
+              ) : null}
+              {props.saves ? (
+                <CompositionNumber iconSrc={SavesIcon} number={props.saves} />
+              ) : null}
+              {props.shares ? (
+                <CompositionNumber iconSrc={SharesIcon} number={props.shares} />
+              ) : null}
+              {props.comments ? (
+                <CompositionNumber
+                  iconSrc={CommentsIcon}
+                  number={props.comments}
+                />
+              ) : null}
+            </NumbersWrapper>
+          </BottomWrapper>
         </Left>
         <Right>
           <VideoWrapper>
-            <Video
-              title={props.heading}
-              src={props.video}
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen></Video>
+            {props.video ? (
+              <Video
+                title={props.heading}
+                src={
+                  "https://player.vimeo.com/video/" +
+                  props.video +
+                  "?&title=0&byline=0&portrait=0"
+                }
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen></Video>
+            ) : null}
           </VideoWrapper>
         </Right>
       </StyledComposition>

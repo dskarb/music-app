@@ -13,7 +13,7 @@ const HomeView = ({ showModal }) => (
     <DiscographySection />
     <ToursSection />
     <LatterSection />
-    <ModalButton onClick={showModal}>Add</ModalButton>
+    <ModalButton onClick={showModal}>+</ModalButton>
   </>
 );
 

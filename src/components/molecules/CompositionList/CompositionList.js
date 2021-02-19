@@ -23,19 +23,9 @@ class CompositionList extends React.Component {
     return (
       <ul>
         <CompForm />
-        {compositions.map(
-          ({ id, year, title, heading, content, video, link }) => (
-            <Composition
-              id={id}
-              year={year}
-              title={title}
-              heading={heading}
-              content={content}
-              video={video}
-              link={link}
-              key={id}></Composition>
-          )
-        )}
+        {compositions.map(({ id, ...props }) => (
+          <Composition key={id} {...props}></Composition>
+        ))}
       </ul>
     );
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import StyledLink from "../../atoms/StyledLink/StyledLink";
 
@@ -12,6 +12,12 @@ const NavWrapper = styled.ul`
   justify-content: center;
   width: 100%;
   background: rgba(200, 200, 200, 0.5);
+  z-index: 10;
+  transition: ${(props) => `${props.theme.transition}`};
+
+  &.scrolled {
+    background: rgba(200, 200, 200, 1);
+  }
 `;
 
 const NavItem = styled.li`
@@ -21,77 +27,57 @@ const NavItem = styled.li`
   }
 `;
 
-const StyledAnchor = styled.a`
-  text-decoration: none;
-  text-transform: uppercase;
-  color: ${(props) => `${props.theme.colors.grey}`};
-  display: flex;
-  align-items: center;
-  font-size: 17px;
-  padding: 16px 0;
-  margin: 0 20px;
-  cursor: pointer;
-  position: relative;
-  transition: 0.2s ease-out all;
-  &::after {
-    position: absolute;
-    content: "";
-    left: -10px;
-    bottom: 10px;
-    width: 100%;
-    height: 2px;
-    background: ${(props) => `${props.theme.colors.grey}`};
-    opacity: 0;
-    transition: 0.2s ease-out all;
-  }
-  @media (max-width: 1400px) {
-    font-size: 0.9em;
-  }
-  &:hover {
-    color: ${(props) => `${props.theme.colors.black}`};
-    &::after {
-      opacity: 1;
-      left: 0;
-      background: ${(props) => `${props.theme.colors.black}`};
-    }
-  }
-`;
+const MainNav = () => {
+  const [scroll, setScroll] = useState(false);
 
-const MainNav = () => (
-  <NavWrapper>
-    <NavItem>
-      <StyledLink to="/">Home</StyledLink>
-    </NavItem>
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 30);
+    });
+  }, []);
 
-    <NavItem>
-      <StyledAnchor href="#hero">About</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor href="#discography">Discography</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor href="#concert-tours">Concert tours</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor  href="#latter-compositions">Latter compositions</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor>New tracks</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor>Upcoming events</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor>History</StyledAnchor>
-    </NavItem>
-    <NavItem>
-      <StyledAnchor>Contact</StyledAnchor>
-    </NavItem>
+  return (
+    <NavWrapper className={scroll ? "scrolled" : null}>
+      <NavItem>
+        <StyledLink as="a" to="/">
+          Home
+        </StyledLink>
+      </NavItem>
 
-    <NavItem>
-      <StyledLink to="/add-composition">Add Composition</StyledLink>
-    </NavItem>
-  </NavWrapper>
-);
+      <NavItem>
+        <StyledLink as="a" href="#hero">
+          About
+        </StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a" href="#discography">
+          Discography
+        </StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a" href="#concert-tours">
+          Concert tours
+        </StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a" href="#latter-compositions">
+          Latter compositions
+        </StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a">New tracks</StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a">Upcoming events</StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a">History</StyledLink>
+      </NavItem>
+      <NavItem>
+        <StyledLink as="a">Contact</StyledLink>
+      </NavItem>
+    </NavWrapper>
+  );
+};
 
 export default MainNav;

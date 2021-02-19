@@ -6,10 +6,10 @@ const activeClassName = "nav-item-active";
 const StyledLink = styled(NavLink).attrs({ activeClassName })`
   text-decoration: none;
   text-transform: uppercase;
-  color: #000;
+  color: ${(props) => `${props.theme.colors.grey}`};
   display: flex;
   align-items: center;
-  font-size: 1em;
+  font-size: 17px;
   padding: 16px 0;
   margin: 0 20px;
   cursor: pointer;
@@ -22,25 +22,19 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
     bottom: 10px;
     width: 100%;
     height: 2px;
-    background: #000;
+    background: ${(props) => `${props.theme.colors.grey}`};
     opacity: 0;
     transition: 0.2s ease-out all;
   }
   @media (max-width: 1400px) {
     font-size: 0.9em;
-    padding: 16px 24px;
-  }
-  &.${activeClassName} {
-
-    &::after {
-      opacity: 1;
-      left: 0;
-    }
   }
   &:hover {
+    color: ${(props) => `${props.theme.colors.black}`};
     &::after {
       opacity: 1;
       left: 0;
+      background: ${(props) => `${props.theme.colors.black}`};
     }
   }
 `;

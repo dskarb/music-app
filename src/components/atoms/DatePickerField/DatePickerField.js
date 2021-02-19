@@ -11,7 +11,6 @@ export const DatePickerField = ({ ...props }) => {
       {...field}
       {...props}
       selected={(field.value && new Date(field.value)) || null}
-      dateFormat="yyyy/MM/dd"
       onChange={(val) => {
         setFieldValue(field.name, val);
       }}

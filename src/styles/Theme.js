@@ -10,7 +10,9 @@ const theme = {
     greyText: "#798285",
     lightGrey: "#acacac",
     buttonBorder: "#b3b5b5",
+    lighterGrey: "#f5f6f6",
   },
+  transition: "all .6s cubic-bezier(.165,.84,.44,1) .2s",
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
   fonts: ["sans-serif", "Dosis"],
   fontSizes: {

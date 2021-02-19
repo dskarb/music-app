@@ -13,12 +13,15 @@ const StyledButton = styled.a`
   line-height: 1.1;
   font-weight: 700;
   border-radius: 0;
-
   font-family: "Open Sans", sans-serif;
   color: ${(props) => `${props.theme.colors.deepBlack}`};
   transition: 0.2s ease-out all;
   min-width: 195px;
   border: 1px solid ${(props) => `${props.theme.colors.buttonBorder}`};
+
+  &:hover {
+    background: ${(props) => `${props.theme.colors.buttonBorder}`};
+  }
 `;
 
 const StyledAngleRight = styled.img`
