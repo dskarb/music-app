@@ -38,11 +38,7 @@ const MainNav = () => {
 
   return (
     <NavWrapper className={scroll ? "scrolled" : null}>
-      <NavItem>
-        <StyledLink as="a" to="/">
-          Home
-        </StyledLink>
-      </NavItem>
+     
 
       <NavItem>
         <StyledLink as="a" href="#hero">

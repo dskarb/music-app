@@ -18,6 +18,8 @@ const StyledButton = styled.a`
   transition: 0.2s ease-out all;
   min-width: 195px;
   border: 1px solid ${(props) => `${props.theme.colors.buttonBorder}`};
+  background: transparent;
+  cursor: pointer;
 
   &:hover {
     background: ${(props) => `${props.theme.colors.buttonBorder}`};
