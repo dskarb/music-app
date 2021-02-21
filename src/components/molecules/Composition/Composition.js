@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { device } from "../../../styles/Theme";
 import Button from "../../atoms/Button/Button";
 import Date from "../../atoms/Date/Date";
 import DateTitle from "../../atoms/DateTitle/DateTitle";
@@ -22,9 +24,19 @@ const StyledComposition = styled.div`
     & > div::after {
       left: unset;
       right: 100%;
-      border-left: 20px solid transparent;
-      border-right: 20px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+      border-left: 14px solid transparent;
+      border-right: 14px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+
+      @media ${device.laptop} {
+        right: unset;
+        left: 50%;
+        border-right: 14px solid transparent;
+      }
     }
+  }
+
+  @media ${device.laptop} {
+    flex-direction: column !important;
   }
 `;
 
@@ -42,18 +54,35 @@ const Left = styled.div`
     top: 50%;
     width: 0;
     height: 0;
-    border-left: 20px solid ${(props) => `${props.theme.colors.lighterGrey}`};
-    border-right: 20px solid transparent;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
+    border-left: 14px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+    border-right: 14px solid transparent;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
     clear: both;
     z-index: 1;
     transform: translateY(-50%);
+
+    @media ${device.laptop} {
+      border-top: 14px solid ${(props) => `${props.theme.colors.lighterGrey}`};
+      border-left: 14px solid transparent;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media ${device.laptop} {
+    width: 100%;
   }
 `;
 
 const Right = styled.div`
   width: 50%;
+  background: ${(props) => `${props.theme.colors.deepBlack}`};
+
+  @media ${device.laptop} {
+    width: 100%;
+  }
 `;
 
 const StyledHeadingThree = styled(HeadingThree)`
@@ -62,6 +91,10 @@ const StyledHeadingThree = styled(HeadingThree)`
 
 const StyledButton = styled(Button)`
   margin-right: 20px;
+
+  @media ${device.mobileL} {
+    margin-right: 0px;
+  }
 `;
 
 const VideoWrapper = styled.div`
@@ -72,8 +105,11 @@ const VideoWrapper = styled.div`
 const BottomWrapper = styled.div`
   margin-top: auto;
   display: flex;
-  flex-wrap: wrap;
   align-items: flex-end;
+
+  @media ${device.mobileL} {
+   flex-wrap: wrap;
+  }
 
   a {
     margin-right: 30px;
@@ -83,6 +119,10 @@ const BottomWrapper = styled.div`
 const NumbersWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media ${device.mobileL} {
+   margin-top: 20px;
+  }
 `;
 
 const Video = styled.iframe`
@@ -99,7 +139,7 @@ const Composition = ({ children, ...props }) => {
     <>
       <StyledComposition {...props}>
         <Left>
-          <Date>{props.year}</Date>
+          <Date maxWidth="390px">{props.year}</Date>
           <DateTitle>{props.title}</DateTitle>
           <StyledHeadingThree>{props.heading}</StyledHeadingThree>
           <Paragraph>{props.content}</Paragraph>

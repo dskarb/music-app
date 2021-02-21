@@ -7,15 +7,14 @@ const StyledButton = styled.a`
   display: inline-block;
   position: relative;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.8rem;
   text-decoration: none;
   padding: 23px 30px;
   line-height: 1.1;
   font-weight: 700;
   border-radius: 0;
-  font-family: "Open Sans", sans-serif;
   color: ${(props) => `${props.theme.colors.deepBlack}`};
-  transition: 0.2s ease-out all;
+  transition: ${(props) => `${props.theme.transition}`};
   min-width: 195px;
   border: 1px solid ${(props) => `${props.theme.colors.buttonBorder}`};
   background: transparent;
@@ -50,7 +49,7 @@ const StyledAnchor = styled(StyledButton)`
         background-size: cover;
         filter: grayscale(1);
         opacity: 0.4;
-        transition: 0.2s ease-out all;
+        transition: ${(props) => `${props.theme.transition}`};
       }
 
       span {

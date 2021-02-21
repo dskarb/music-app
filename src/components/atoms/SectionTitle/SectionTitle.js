@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { device } from "../../../styles/Theme";
 import DiscoTextBg from "../../../assets/img/disco_text_bg.png";
 
 const StyledSectionTitle = styled.h2`
@@ -9,12 +11,9 @@ const StyledSectionTitle = styled.h2`
   display: inline-block;
   letter-spacing: 3px;
   margin: 0 0 50px;
-
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a26d53+0,785456+100 */
-  background: #000;
-  /* background: -webkit-linear-gradient(to right, #a26d53 0%, 785456 100%);
-  background: -moz-linear-gradient(to right, #a26d53 0%, 785456 100%);
-  background: linear-gradient(to right, #a26d53 0%, 785456 100%); */
+  padding: 0 15px;
+  font-family: Dosis, sans-serif;
+  background: ${(props) => `${props.theme.colors.deepBlack}`};
   background-image: url(${DiscoTextBg});
   background-position: right;
   background-size: cover;
@@ -30,6 +29,16 @@ const StyledSectionTitle = styled.h2`
     top: 51%;
     height: 1px;
     z-index: -1;
+    display: block;
+
+    @media ${device.tablet} {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @media ${device.tablet} {
+    font-size: 1.8rem;
   }
 `;
 

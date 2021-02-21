@@ -1,20 +1,19 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { device } from "../../../styles/Theme";
 
-const activeClassName = "nav-item-active";
-
-const StyledLink = styled(NavLink).attrs({ activeClassName })`
+const StyledLink = styled.a`
   text-decoration: none;
   text-transform: uppercase;
   color: ${(props) => `${props.theme.colors.grey}`};
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  font-size: 17px;
+  font-size: 1rem;
   padding: 16px 0;
   margin: 0 20px;
   cursor: pointer;
   position: relative;
-  transition: 0.2s ease-out all;
+  font-family: Dosis, sans-serif;
+  transition: ${(props) => `${props.theme.transition}`};
   &::after {
     position: absolute;
     content: "";
@@ -24,10 +23,14 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
     height: 2px;
     background: ${(props) => `${props.theme.colors.grey}`};
     opacity: 0;
-    transition: 0.2s ease-out all;
+    transition: ${(props) => `${props.theme.transition}`};
   }
-  @media (max-width: 1400px) {
-    font-size: 0.9em;
+  @media ${device.laptopL} {
+    font-size: 0.9rem;
+  }
+
+  @media ${device.laptop} {
+    font-size: 1.2rem;
   }
   &:hover {
     color: ${(props) => `${props.theme.colors.black}`};

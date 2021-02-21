@@ -17,17 +17,15 @@ const Head = styled.div`
 const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
 `;
 
 const LatterSectionTitle = styled(SectionTitle)`
-  background: #000000;
+  background: ${(props) => `${props.theme.colors.deepBlack}`};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
-const LatterSection = ({ compositions }) => (
+const LatterSection = () => (
   <LatterWrapper id="latter-compositions">
     <Container>
       <Head>

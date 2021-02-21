@@ -1,9 +1,10 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
 import HeroBg from "../../../assets/img/hero_bg.png";
 import HeroImg from "../../../assets/img/hero_img.png";
+import Container from "../../atoms/Container/Container";
 
-const HeroWrapper = styled.div`
+const HeroWrapper = styled.section`
   background-image: url(${HeroBg});
   background-position: top;
   background-size: cover;
@@ -17,7 +18,9 @@ const HeroWrapper = styled.div`
 
 const HeroSection = () => (
   <HeroWrapper id="hero">
-    <img src={HeroImg} alt="" />
+    <Container>
+      <img src={HeroImg} alt="" />
+    </Container>
   </HeroWrapper>
 );
 

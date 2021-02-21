@@ -21,12 +21,12 @@ class CompositionList extends React.Component {
     }
 
     return (
-      <ul>
+      <div>
         <CompForm />
         {compositions.map(({ id, ...props }) => (
           <Composition key={id} {...props}></Composition>
         ))}
-      </ul>
+      </div>
     );
   }
 }

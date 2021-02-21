@@ -5,14 +5,14 @@ const StyledNumber = styled.div`
   display: flex;
   align-items: center;
   margin-right: 20px;
+  margin-top: 8px;
 
   img {
     margin-right: 6px;
   }
 
   span {
-    font-family: "Open Sans", sans-serif;
-    font-size: 12px;
+    font-size: 0.8rem;
     color: ${(props) => `${props.theme.colors.lightGrey}`};
   }
 `;

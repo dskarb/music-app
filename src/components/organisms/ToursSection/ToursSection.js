@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
+import { device } from "../../../styles/Theme";
 import Section from "../../atoms/Section/Section";
 import Container from "../../atoms/Container/Container";
 import SectionTitle from "../../atoms/SectionTitle/SectionTitle";
@@ -13,11 +14,7 @@ import Button from "../../atoms/Button/Button";
 
 const ToursWrapper = styled(Section)`
   background: url(${ToursBg}) bottom no-repeat;
-  background-size: contain;
-`;
-
-const ToursDate = styled(Date)`
-  max-width: 395px;
+  background-size: auto;
 `;
 
 const ToursDateTitle = styled(DateTitle)`
@@ -27,16 +24,22 @@ const ToursDateTitle = styled(DateTitle)`
 const Head = styled.div`
   text-align: center;
   margin-bottom: 470px;
+
+  @media ${device.tablet} {
+    margin-bottom: 330px;
+  }
 `;
 
 const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1100px;
-  margin: 0 auto;
 
   div {
-    max-width: 670px;
+    max-width: 55%;
+
+    @media ${device.tablet} {
+      max-width: 450px;
+    }
   }
 `;
 
@@ -49,24 +52,22 @@ const ToursSectionTitle = styled(SectionTitle)`
   -webkit-text-fill-color: transparent;
 `;
 
-// const ToursBG = styled.img`
-//   margin-top: 0px;
-//   position: relative;
-//   z-index: -1;
-// `;
-
 const ToursSection = () => (
   <ToursWrapper id="concert-tours">
     <Container>
       <Head>
         <ToursSectionTitle>Concert Tours</ToursSectionTitle>
         <SectionSubheading>
-        Before the release of Night Visions, Imagine Dragons made appearances on American radio and television to promote their extended play, Continued Silence and debut single It's Time. The band performed "It's Time" on the July 16, 2012 airing of NBC late-night talk show The Tonight Show with Jay Leno"
+          Before the release of Night Visions, Imagine Dragons made appearances
+          on American radio and television to promote their extended play,
+          Continued Silence and debut single It's Time. The band performed "It's
+          Time" on the July 16, 2012 airing of NBC late-night talk show The
+          Tonight Show with Jay Leno"
         </SectionSubheading>
       </Head>
       <SectionContent>
         <div>
-          <ToursDate>03.08.2015</ToursDate>
+          <Date maxWidth="390px">03.08.2015</Date>
           <ToursDateTitle>Smoke + Mirrors Tour</ToursDateTitle>
           <HeadingThree>2015 - Present</HeadingThree>
           <Paragraph>
@@ -80,7 +81,9 @@ const ToursSection = () => (
             we die. next year. Hopefully we don't die and there will be a second
             album. I don't know when it will be, but it may come"
           </Paragraph>
-          <Button href="#" angle>Buy online</Button>
+          <Button href="#" angle>
+            Buy online
+          </Button>
         </div>
       </SectionContent>
     </Container>

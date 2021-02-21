@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
 import Section from "../../atoms/Section/Section";
 import Container from "../../atoms/Container/Container";
 import SectionTitle from "../../atoms/SectionTitle/SectionTitle";
@@ -8,8 +8,9 @@ import Disc from "../../molecules/Disc/Disc";
 import DiscoBg from "../../../assets/img/disco_bg.jpg";
 
 const DiscographyWrapper = styled(Section)`
-  /* padding-top: 100px; */
-  padding-bottom: 0;
+  padding-bottom: 260px;
+  background: url(${DiscoBg}) bottom no-repeat;
+  background-size: auto;
 `;
 
 const Head = styled.div`
@@ -20,14 +21,6 @@ const Head = styled.div`
 const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1230px;
-  margin: 0 auto;
-`;
-
-const DiscoBG = styled.img`
-  margin-top: -450px;
-  position: relative;
-  z-index: -1;
 `;
 
 const DiscographySection = () => (
@@ -36,7 +29,10 @@ const DiscographySection = () => (
       <Head>
         <SectionTitle color="#90614f">Discography</SectionTitle>
         <SectionSubheading>
-        September 4 world heard Night Visions, the first full album. He reached the 2 position in the chart Billboard 200. The single «It's Time» took 22 th place in the Billboard Hot 100, 4th in the Billboard Alternative and Billboard Rock, and now went platinum.
+          September 4 world heard Night Visions, the first full album. He
+          reached the 2 position in the chart Billboard 200. The single «It's
+          Time» took 22 th place in the Billboard Hot 100, 4th in the Billboard
+          Alternative and Billboard Rock, and now went platinum.
         </SectionSubheading>
       </Head>
       <SectionContent>
@@ -63,7 +59,6 @@ const DiscographySection = () => (
           link="https://smokemirrors.com"></Disc>
       </SectionContent>
     </Container>
-    <DiscoBG src={DiscoBg} alt=""></DiscoBG>
   </DiscographyWrapper>
 );
 
