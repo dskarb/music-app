@@ -81,7 +81,7 @@ const ToursSection = () => (
             we die. next year. Hopefully we don't die and there will be a second
             album. I don't know when it will be, but it may come"
           </Paragraph>
-          <Button href="#" angle>
+          <Button href="https://en.wikipedia.org/wiki/Smoke_%2B_Mirrors_Tour" angle>
             Buy online
           </Button>
         </div>
